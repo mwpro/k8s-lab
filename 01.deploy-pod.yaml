@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: lab-api
+  labels:
+    app: lab-api
+spec:
+  containers:
+  - name: lab-api
+    image: mwpro/k8s-labs:api-1.0
