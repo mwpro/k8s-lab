@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-api
+  labels:
+    app: lab-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: lab-api
+  template:
+    metadata:
+      labels:
+        app: lab-api
+    spec:
+      containers:
+      - name: lab-api
+        image: mwpro/k8s-labs:api-1.0
+        env:
+          - name: "ENV_VALUE"
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lab-api
+spec:
+  selector:
+    app: lab-api
+  ports:
+  - port: 80
+    targetPort: 80
+              
