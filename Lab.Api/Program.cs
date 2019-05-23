@@ -21,7 +21,7 @@ namespace Lab.Api
         {
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync($"Hello {configuration.GetValue<string>("ENV_VALUE") ?? "GP"} World!");
+                await context.Response.WriteAsync($"Hello {configuration.GetValue<string>("ENV_VALUE") ?? "GP"} World!\r\n");
             });
         }
     }
